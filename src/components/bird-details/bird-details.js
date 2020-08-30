@@ -14,7 +14,6 @@ export default class BirdDetails extends Component {
   
   render() {
     const { birds, isNull } = this.props;
-    console.log("isNull",isNull);
     let isBird = false;
     
     const bird1 = {
@@ -50,7 +49,7 @@ export default class BirdDetails extends Component {
                   <li className="list-group-item item h5">{bird1.name}</li>
                   <li className="list-group-item item h6">{bird1.species}</li>
                 </ul>
-                <div className="player"><audio src={bird1.audio} controls></audio></div>
+                <div className="player"><audio  className="audio" src={bird1.audio} controls></audio></div>
               </div>
             </div>
             <p>

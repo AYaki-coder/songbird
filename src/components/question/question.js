@@ -11,8 +11,7 @@ export default class Question extends Component {
 
   render() {
     const { bird, isAnswerCorrect } = this.props;
-    // const { imgUrl, birdName } = this.state;
-    console.log(bird.name, isAnswerCorrect);
+    console.log('правильный ответ',bird.name);
     const imgUrl = isAnswerCorrect ? bird.image : this.state.imgUrl;
     const birdName = isAnswerCorrect ? bird.name : this.state.birdName;
     return (
@@ -20,7 +19,7 @@ export default class Question extends Component {
         <img src={imgUrl} alt="bird" className="img" />
         <div className="col-8 d-flex flex-column justify-content-around">
           <div className="h2 bird-name">{birdName}</div>
-          <audio controls src={ bird.audio }></audio>
+          <audio className="audio" controls src={ bird.audio }></audio>
         </div>
       </div>
     );
