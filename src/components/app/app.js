@@ -14,23 +14,44 @@ export default class App extends Component {
     isAnswerCorrect: false,
     correctAnswerNumber: 4,
     clickedBird: null,
+    clickedItems: [ false, false, false, false, false, false,],
+    // isItemClicked: false,
   }
 
   onClick = (id) => {
     // открыть доп инфо
     this.setState(() => {
-      console.log("птица", id - 1)
       return ({
         clickedBird: id - 1,
       });
     });
     // проверить кликался ли раньше
+    if(this.checkItemStatus(id)){
+      this.setClickedStatus(id);
+      this.onAnswer(id);
+
+    }
     // если да, вызвать onAnswer
   }
-  // openBirdDetails = (id, round) => {
-
-  // }
-
+  setClickedStatus = (id) => {
+    this.setState(({ clickedItems }) => {
+      const inx = id - 1;
+      const newStatus = true;
+      const newArray = [...clickedItems.slice(0, inx), newStatus,...clickedItems.slice(inx + 1)];
+      console.log('новый массив', newArray);
+      return {
+        clickedItems: newArray,
+      };
+    });
+  }
+  checkItemStatus = (id) => {
+    
+    if(!this.state.isAnswerCorrect){
+      if(!this.state.clickedItems[id - 1])
+      return true;
+    }
+    return false;
+  }
   onAnswer = (id) => {
     console.log('rightID', this.state.correctAnswerNumber + 1, 'myAnswer:', id);
     if (id === (this.state.correctAnswerNumber + 1)) {
@@ -55,6 +76,8 @@ export default class App extends Component {
             birdGroup={birdData[this.state.gameStep]}
             isAnswerCorrect={this.state.isAnswerCorrect}
             onClick = {this.onClick}
+            clickedItems ={ this.state.clickedItems }
+            correctAnswerNumber = { this.state.correctAnswerNumber }
             // onAnswer={this.onAnswer}
           />
           < BirdDetails
