@@ -7,7 +7,7 @@
 .img {
   width: 10rem;
   height: 10rem;
-  background-size: cover;
+  object-fit: cover;
   border-radius: 0.25rem;
 }
 .bird-name {
