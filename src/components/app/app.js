@@ -10,7 +10,7 @@ import BirdDetails from '../bird-details';
 import NextLvlButton from '../next-level-button'
 
 export default class App extends Component {
-
+  maxScore = 5;
   state = {
     gameRound: 0,
     isAnswerCorrect: false,
@@ -27,6 +27,7 @@ export default class App extends Component {
       });
     });
     if (this.checkItemStatus(id)) {
+      console.log('неправильный ответ')
       this.setClickedStatus(id);
       this.onAnswer(id);
     }
@@ -47,10 +48,13 @@ export default class App extends Component {
     }
   }
   setClickedStatus = (id) => {
+   
     this.setState(({ clickedItems }) => {
+      console.log(clickedItems);
       const inx = id - 1;
       const newStatus = true;
       const newArray = [...clickedItems.slice(0, inx), newStatus, ...clickedItems.slice(inx + 1)];
+      console.log('статус кликнули', newArray);
       return {
         clickedItems: newArray,
       };
@@ -67,14 +71,23 @@ export default class App extends Component {
   onAnswer = (id) => {
     if (id === (this.state.correctAnswerNumber + 1)) {
       this.playAnswerSound(true);
-      this.setState(() => {
+      
+      this.setState(({score, clickedItems}) => {
+
+        const newScore = score + this.maxScore - this.calcWrongAnswers(clickedItems);  
         return {
+          score: newScore,
           isAnswerCorrect: true,
         };
       });
     } else {
       this.playAnswerSound(false);
     }
+  }
+
+  calcWrongAnswers = (arr) => {
+    
+    return arr.filter((el) => el).length - 1;
   }
 
   render() {
