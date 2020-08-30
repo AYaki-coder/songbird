@@ -1,0 +1,15 @@
+.random-question {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+.img {
+  width: 10rem;
+  height: 10rem;
+  background-size: cover;
+  border-radius: 0.25rem;
+}
+.bird-name {
+  border-bottom: 1px solid #444;
+}
