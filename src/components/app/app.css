@@ -2,6 +2,10 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 2rem 0;
+}
+.try-button {
+  margin: 0 auto;
+  width: 100%;
 }

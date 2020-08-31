@@ -7,10 +7,12 @@ import Header from '../header';
 import Question from '../question';
 import BirdsList from '../birds-list';
 import BirdDetails from '../bird-details';
-import NextLvlButton from '../next-level-button'
+import NextLvlButton from '../next-level-button';
+import Result from '../result';
 
 export default class App extends Component {
   maxScore = 5;
+  maxGameScore = 30;
   state = {
     gameRound: 0,
     isAnswerCorrect: false,
@@ -18,6 +20,7 @@ export default class App extends Component {
     clickedBird: null,
     clickedItems: [false, false, false, false, false, false,],
     score: 0,
+    isGame: true,
   }
 
   onClick = (id) => {
@@ -95,6 +98,14 @@ export default class App extends Component {
     this.setState(() => {
       const newRound = this.state.gameRound + 1;
       console.log('next round', newRound);
+      if(newRound === 6){
+        return ({
+          gameRound: newRound,
+          isAnswerCorrect: false,
+          isGame: false,
+        });
+      }
+     
       return ({
         gameRound: newRound,
         isAnswerCorrect: false,
@@ -104,20 +115,31 @@ export default class App extends Component {
       });
     });
   }
+  restartGame = () => {
+    this.setState(() => {
+      return {
+        gameRound: 0,
+        isAnswerCorrect: false,
+        correctAnswerNumber: randomNumber(6),
+        clickedBird: null,
+        clickedItems: [false, false, false, false, false, false,],
+        score: 0,
+        isGame: true,
+      }
+    });
+  }
 
   render() {
+    const content = this.state.isGame ? < GameComponents state = {this.state} onClick = { this.onClick }
+    isNextRound = { this.isNextRound} /> :  < Result  maxGameScore={this.maxGameScore} score={this.state.score} restartGame={this.restartGame}/>;
+    const className = this.state.isGame ? "container wrapper justify-content-md-between" : "container wrapper"
     return (
-      <div className="container wrapper">
+      <div className={ className }>
         < Header
           score={this.state.score}
           gameRound={this.state.gameRound}
         />
-        < GameComponents 
-          state = {this.state}
-          onClick = { this.onClick }
-          isNextRound = { this.isNextRound}
-        />
-        
+        {content}
       </div>
     );
   };
