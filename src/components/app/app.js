@@ -49,6 +49,7 @@ export default class App extends Component {
       document.getElementById('wrongAnswer').play();
     }
   }
+ 
   setClickedStatus = (id) => {
 
     this.setState(({ clickedItems }) => {
@@ -127,7 +128,8 @@ export default class App extends Component {
 
   render() {
     const content = this.state.isGame ? < GameComponents state = {this.state} onClick = { this.onClick }
-    isNextRound = { this.isNextRound} /> :  < Result  maxGameScore={this.maxGameScore} score={this.state.score} restartGame={this.restartGame}/>;
+        isNextRound = { this.isNextRound} /> :  < Result  maxGameScore={this.maxGameScore}
+        score={this.state.score} restartGame={this.restartGame}/>;
     const className = this.state.isGame ? "container wrapper justify-content-md-between" : "container wrapper"
     return (
       <div className={ className }>
