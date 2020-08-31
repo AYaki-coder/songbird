@@ -4,6 +4,7 @@
   /* background-image: url('./default-image.svg'); */
   background-size: cover;
   border-radius: 0.25rem;
+  object-fit: cover;
 }
 .col-wrapper{
   height: 100%;
