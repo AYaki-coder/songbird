@@ -34,7 +34,7 @@ export default class BirdDetails extends Component {
     const defaultClassName = isBird ? 'd-none' : 'defaultClass';
     const infoClassName = isBird ? '': 'hidden';
     return (
-      <div className="col-6">
+      <div className="col-12 col-md-6 mb-3 mb-md-0">
 
         <div className="col-wrapper p-3">
           <div className={defaultClassName}>
@@ -43,8 +43,8 @@ export default class BirdDetails extends Component {
           </div>
           <div className={ infoClassName }>
             <div className="d-flex justify-content-between mb-3">
-              <img className="img" src={bird1.imgUrl} alt={bird1.name} />
-              <div className="col-6 d-flex flex-column justify-content-between">
+              <img className="img-details" src={bird1.imgUrl} alt={bird1.name} />
+              <div className="col-8 col-md-6 d-flex flex-column justify-content-between">
                 <ul className="list-group">
                   <li className="list-group-item item h5">{bird1.name}</li>
                   <li className="list-group-item item h6">{bird1.species}</li>

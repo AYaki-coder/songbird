@@ -2,7 +2,6 @@ import React from 'react';
 import './header.css';
 
 const Header = ({ score, gameRound }) => {
-  console.log('score', score);
   const birdsType = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы' ];
   let keyValue = -1;
 
@@ -21,8 +20,8 @@ const Header = ({ score, gameRound }) => {
   });
   return (
     <header className="mt-3">
-      <div className="col-12 d-flex align-items-end justify-content-between mb-5">
-        <div className="d-flex">
+      <div className="col-12 d-flex flex-column justify-content-center align-items-center flex-sm-row align-items-sm-end justify-content-sm-between mb-5">
+        <div className="d-flex mb-2 mb-sm-0">
           <div className="logo-image"></div>
           <h1 className="logo"><span>Song</span><span className="text-info">bird</span></h1>
         </div>

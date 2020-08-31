@@ -30,7 +30,6 @@ export default class App extends Component {
       });
     });
     if (this.checkItemStatus(id)) {
-      console.log('неправильный ответ')
       this.setClickedStatus(id);
       this.onAnswer(id);
     }
@@ -53,11 +52,9 @@ export default class App extends Component {
   setClickedStatus = (id) => {
 
     this.setState(({ clickedItems }) => {
-      console.log(clickedItems);
       const inx = id - 1;
       const newStatus = true;
       const newArray = [...clickedItems.slice(0, inx), newStatus, ...clickedItems.slice(inx + 1)];
-      console.log('статус кликнули', newArray);
       return {
         clickedItems: newArray,
       };
@@ -97,7 +94,6 @@ export default class App extends Component {
 
     this.setState(() => {
       const newRound = this.state.gameRound + 1;
-      console.log('next round', newRound);
       if(newRound === 6){
         return ({
           gameRound: newRound,
@@ -148,13 +144,14 @@ export default class App extends Component {
 const GameComponents = ({ state, onClick, isNextRound}) => {
   const { gameRound, correctAnswerNumber, isAnswerCorrect, clickedItems, 
           clickedBird, } = state;
+  console.log('правильный ответ', birdData[gameRound][correctAnswerNumber].name);
   return (
     < React.Fragment>
       < Question
         bird={birdData[gameRound][correctAnswerNumber]}
         isAnswerCorrect={isAnswerCorrect}
       />
-      <div className="row d-flex">
+      <div className="row d-sm-flex">
         < BirdsList
           birdGroup={birdData[gameRound]}
           isAnswerCorrect={isAnswerCorrect}
