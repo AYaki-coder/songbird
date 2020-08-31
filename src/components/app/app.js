@@ -19,7 +19,7 @@ export default class App extends Component {
     clickedItems: [false, false, false, false, false, false,],
     score: 0,
   }
-  
+
   onClick = (id) => {
     this.setState(() => {
       return ({
@@ -31,15 +31,15 @@ export default class App extends Component {
       this.setClickedStatus(id);
       this.onAnswer(id);
     }
-    
+
   }
   playAnswerSound = (isCorrectAnswer) => {
-    document.querySelectorAll('.answerPlayer').forEach((el) =>{
+    document.querySelectorAll('.answerPlayer').forEach((el) => {
       el.pause();
       el.currentTime = 0;
     });
-    if(isCorrectAnswer) {
-      document.querySelectorAll('.audio').forEach((el) =>{
+    if (isCorrectAnswer) {
+      document.querySelectorAll('.audio').forEach((el) => {
         el.pause();
       });
       document.getElementById('correctAnswer').play();
@@ -48,7 +48,7 @@ export default class App extends Component {
     }
   }
   setClickedStatus = (id) => {
-   
+
     this.setState(({ clickedItems }) => {
       console.log(clickedItems);
       const inx = id - 1;
@@ -71,10 +71,10 @@ export default class App extends Component {
   onAnswer = (id) => {
     if (id === (this.state.correctAnswerNumber + 1)) {
       this.playAnswerSound(true);
-      
-      this.setState(({score, clickedItems}) => {
 
-        const newScore = score + this.maxScore - this.calcWrongAnswers(clickedItems);  
+      this.setState(({ score, clickedItems }) => {
+
+        const newScore = score + this.maxScore - this.calcWrongAnswers(clickedItems);
         return {
           score: newScore,
           isAnswerCorrect: true,
@@ -86,8 +86,23 @@ export default class App extends Component {
   }
 
   calcWrongAnswers = (arr) => {
-    
+
     return arr.filter((el) => el).length - 1;
+  }
+
+  isNextRound = () => {
+    
+    this.setState(() => {
+      const newRound = this.state.gameRound + 1;
+      console.log('next round', newRound);
+      return ({
+        gameRound: newRound,
+        isAnswerCorrect: false,
+        correctAnswerNumber: randomNumber(6),
+        clickedBird: null,
+        clickedItems: [false, false, false, false, false, false,],
+      });
+    });
   }
 
   render() {
@@ -114,7 +129,10 @@ export default class App extends Component {
             birds={birdData[this.state.gameRound]}
           />
         </div>
-        < NextLvlButton />
+        < NextLvlButton
+          isAnswerCorrect={this.state.isAnswerCorrect}
+          isNextRound={this.isNextRound}
+        />
         <audio className="audio answerPlayer" id="correctAnswer" src="./win.mp3"></audio>
         <audio className="audio answerPlayer" id="wrongAnswer" src="./error.mp3"></audio>
 

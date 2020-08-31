@@ -10,7 +10,7 @@ const Header = ({ score }) => {
           <div className="logo-image"></div>
           <h1 className="logo"><span>Song</span><span className="text-info">bird</span></h1>
         </div>
-        <h2 className="score">Score: <span className="text-danger">{ score }</span></h2>
+        <h2 className="score">Счёт: <span className="text-danger">{ score }</span></h2>
       </div>
       <ul className="birds-group">
         <li className="birds-group-item btn btn-info active">Разминка</li>
