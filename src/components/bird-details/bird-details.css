@@ -1,0 +1,42 @@
+.img-details{
+  width: 8rem;
+  height: 8rem;
+  /* background-image: url('./default-image.svg'); */
+  background-size: cover;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+.col-wrapper{
+  height: 100%;
+  border-radius: .25rem;
+  border: 1px solid #444;
+  background-color: #303030;
+  position: relative;
+}
+.defaultClass {
+  position: absolute;
+}
+.item{
+  border: none;
+  border-bottom: 1px solid #444;
+}
+.player {
+  /* transform: scaleX(0.75); */
+  display: flex;
+  justify-content: center;
+}
+.hidden {
+  visibility: hidden;
+}
+@media (min-width: 414px) {
+  .img-details {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+@media (min-width: 768px) {
+  .img-details {
+    width: 12rem;
+    height: 12rem;
+  }
+}

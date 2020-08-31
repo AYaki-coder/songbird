@@ -1,0 +1,28 @@
+.logo {
+  font-family: 'Lemonada', cursive;
+  font-weight: 300;
+  font-size: 4rem;
+  align-self: flex-end;
+  margin-bottom: 0px;
+}
+.logo-image {
+  width: 6rem;
+  height: 5rem;
+  background-image: url('./newLogo.svg');
+  background-size: cover;
+}
+.score{
+  font-size: 2rem;
+}
+.birds-group {
+  width:100%;
+  padding:0;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+.birds-group-item{
+  flex:auto;
+  border-radius: 0;
+}

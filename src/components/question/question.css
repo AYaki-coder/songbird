@@ -1,0 +1,39 @@
+.random-question {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+.img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+.question-audio {
+  transform: scale(0.4) translateX(-200px);
+  /* align-self: center; */
+}
+.bird-name {
+  border-bottom: 1px solid #444;
+}
+@media (min-width: 414px) {
+  .img {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+@media (min-width: 576px) {
+  .question-audio {
+    transform: scale(0.75) translateX(-49px);
+  }
+}
+@media (min-width: 768px) {
+  .question-audio {
+    transform: scale(1) translateX(0px);
+  }
+  .img {
+    width: 12rem;
+    height: 12rem;
+  }
+}

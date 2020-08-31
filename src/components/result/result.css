@@ -1,0 +1,15 @@
+.result{
+  margin-top: 5%;
+  justify-self: start;
+}
+.winbird {
+  width: 18rem;
+  height: 14rem;
+  object-fit: cover;
+  border-radius: .5rem;
+  margin:0 2rem;
+  font-family: 'Lemonada', cursive;
+}
+.wintext {
+  font-family: 'Marck Script', cursive;
+}

@@ -1,0 +1,31 @@
+.col-wrapper{
+  height: 100%;
+  border-radius: .25rem;
+  border: 1px solid #444;
+  background-color: #303030;
+}
+.list-item {
+  height: calc(100% / 6);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+}
+.list-item:hover{
+  background-color: #444;
+}
+.list-item:last-child {
+  border-bottom: none;
+}
+.li-btn {
+  margin-right: 1.25rem;
+  font-size: 1.5rem;
+ 
+}
+.birdlist {
+  height: inherit;
+  flex: auto;
+  justify-content: space-around;
+}
