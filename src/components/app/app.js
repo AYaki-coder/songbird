@@ -91,7 +91,7 @@ export default class App extends Component {
   }
 
   isNextRound = () => {
-    
+
     this.setState(() => {
       const newRound = this.state.gameRound + 1;
       console.log('next round', newRound);
@@ -112,31 +112,45 @@ export default class App extends Component {
           score={this.state.score}
           gameRound={this.state.gameRound}
         />
-        < Question
-          bird={birdData[this.state.gameRound][this.state.correctAnswerNumber]}
-          isAnswerCorrect={this.state.isAnswerCorrect}
+        < GameComponents 
+          state = {this.state}
+          onClick = { this.onClick }
+          isNextRound = { this.isNextRound}
         />
-        <div className="row d-flex">
-          < BirdsList
-            birdGroup={birdData[this.state.gameRound]}
-            isAnswerCorrect={this.state.isAnswerCorrect}
-            onClick={this.onClick}
-            clickedItems={this.state.clickedItems}
-            correctAnswerNumber={this.state.correctAnswerNumber}
-          />
-          < BirdDetails
-            isNull={this.state.clickedBird}
-            birds={birdData[this.state.gameRound]}
-          />
-        </div>
-        < NextLvlButton
-          isAnswerCorrect={this.state.isAnswerCorrect}
-          isNextRound={this.isNextRound}
-        />
-        <audio className="audio answerPlayer" id="correctAnswer" src="./win.mp3"></audio>
-        <audio className="audio answerPlayer" id="wrongAnswer" src="./error.mp3"></audio>
-
+        
       </div>
     );
   };
 };
+
+const GameComponents = ({ state, onClick, isNextRound}) => {
+  const { gameRound, correctAnswerNumber, isAnswerCorrect, clickedItems, 
+          clickedBird, } = state;
+  return (
+    < React.Fragment>
+      < Question
+        bird={birdData[gameRound][correctAnswerNumber]}
+        isAnswerCorrect={isAnswerCorrect}
+      />
+      <div className="row d-flex">
+        < BirdsList
+          birdGroup={birdData[gameRound]}
+          isAnswerCorrect={isAnswerCorrect}
+          onClick={onClick}
+          clickedItems={clickedItems}
+          correctAnswerNumber={correctAnswerNumber}
+        />
+        < BirdDetails
+          isNull={clickedBird}
+          birds={birdData[gameRound]}
+        />
+      </div>
+      < NextLvlButton
+        isAnswerCorrect={isAnswerCorrect}
+        isNextRound={isNextRound}
+      />
+      <audio className="audio answerPlayer" id="correctAnswer" src="./win.mp3"></audio>
+      <audio className="audio answerPlayer" id="wrongAnswer" src="./error.mp3"></audio>
+    </ React.Fragment >
+  )
+}
